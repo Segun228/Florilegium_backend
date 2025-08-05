@@ -1,3 +1,38 @@
 from django.db import models
+from authentication.models import User
+from django.contrib.postgres.fields import ArrayField
 
+
+class Category(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_categories')
+    name = models.CharField(max_length=100, null=False, blank=False, default="Раздел")
+    description = models.CharField(max_length=1000, null=True, blank=False, default="Описание")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'раздел объявлений'
+        verbose_name_plural = 'разделы объявлений'
+
+    def __str__(self):
+        return self.name
+
+
+class Post(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="posts")
+    title = models.CharField(max_length=100, null=False, blank=False, default="Раздел")
+    description = models.CharField(max_length=1000, null=True, blank=False, default="Описание")
+    price = models.IntegerField(null=False, blank=False, default=0)
+    photos = ArrayField(models.URLField(), blank=True, default=list)
+    quantity = models.IntegerField(null=False, blank=False, default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'раздел объявлений'
+        verbose_name_plural = 'разделы объявлений'
+
+    def __str__(self):
+        return self.title
 

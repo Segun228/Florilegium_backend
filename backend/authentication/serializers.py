@@ -1,0 +1,9 @@
+from rest_framework.serializers import ModelSerializer
+from authentication.models import User
+
+
+class UserSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["username", "telegram_id"]
+        read_only_fields = ["created_at", "is_admin", "updated_at"]
