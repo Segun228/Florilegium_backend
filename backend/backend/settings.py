@@ -10,7 +10,7 @@ debug = os.getenv("DEBUG")
 database = os.getenv("DATABASE_URL")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+AUTH_USER_MODEL = 'authentication.User'
 
 SECRET_KEY = token
 
@@ -117,8 +117,6 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'API документация моего проекта',
     'VERSION': '1.0.0',
 }
-
-
 
 
 
