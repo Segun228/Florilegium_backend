@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-from datetime import timedelta
 import dj_database_url  # type: ignore
 
 load_dotenv()
@@ -18,7 +17,7 @@ DEBUG = debug
 
 ALLOWED_HOSTS = ["*"]
 
-
+CORS_ALLOW_ALL_ORIGINS = debug
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -31,6 +30,8 @@ INSTALLED_APPS = [
     "authentication",
     'drf_spectacular',
     'drf_spectacular_sidecar',
+    "rest_framework",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -41,6 +42,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = "backend.urls"

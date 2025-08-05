@@ -4,10 +4,15 @@ from drf_spectacular.views import (
     SpectacularRedocView
 )
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from authentication.urls import urlpatterns as auth_urls
+from api.urls import urlpatterns as api_urls
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api/", include(api_urls), name="api-endpoint-group"),
+    path("auth/", include(auth_urls), name="auth-endpoint-group"),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),

@@ -20,7 +20,7 @@ class TelegramAuthView(APIView):
 
         return Response({
             "message": "Authenticated",
-            "user_id": user.telegram_id,
+            "user_id": user.telegram_id, # type: ignore
             "username": user.username,
             "created": created
         }, status=status.HTTP_200_OK)
