@@ -4,7 +4,6 @@ from django.contrib.postgres.fields import ArrayField
 
 
 class Category(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_categories')
     name = models.CharField(max_length=100, null=False, blank=False, default="Раздел")
     description = models.CharField(max_length=1000, null=True, blank=False, default="Описание")
     created_at = models.DateTimeField(auto_now_add=True)
@@ -19,7 +18,6 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="posts")
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=1000, blank=True, default="")
