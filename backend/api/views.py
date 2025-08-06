@@ -29,7 +29,8 @@ class CategoryListCreateView(ListCreateAPIView):
 class CategoryRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAdminOrDebugOrReadOnly]
     queryset = Category.objects.all()
-    lookup_field = "category_id"
+    lookup_field = 'id'
+    lookup_url_kwarg = 'category_id'
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -56,7 +57,8 @@ class PostRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAdminOrDebugOrReadOnly]
     serializer_class = PostSerializer
     queryset = Post.objects.all()
-    lookup_field = "post_id"
+    lookup_field = "id"
+    lookup_url_kwarg = 'post_id'
 
     def get_object(self):
         queryset = self.get_queryset()

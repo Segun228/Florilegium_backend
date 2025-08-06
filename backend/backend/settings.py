@@ -4,20 +4,20 @@ from pathlib import Path
 import dj_database_url  # type: ignore
 
 load_dotenv()
-token = os.getenv("BOT_TOKEN")
+secret_key = os.getenv("SECRET_KEY")
 debug = os.getenv("DEBUG")
 database = os.getenv("DATABASE_URL")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 AUTH_USER_MODEL = 'authentication.User'
 
-SECRET_KEY = token
+SECRET_KEY = secret_key
 
 DEBUG = debug
 
 ALLOWED_HOSTS = ["*"]
 
-CORS_ALLOW_ALL_ORIGINS = debug
+CORS_ALLOW_ALL_ORIGINS = True
 
 INSTALLED_APPS = [
     "django.contrib.admin",
