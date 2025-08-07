@@ -1,9 +1,9 @@
+from django.contrib import admin
 from django.urls import path
-from photos.views import (
-    PhotosUploadView
-)
+
+from .views import PhotosView
 
 
 urlpatterns = [
-    path('photos/upload/', PhotosUploadView.as_view(), name='post-list-create'),
+    path("<int:post_id>/", PhotosView.as_view(), name="photo endpoint"),
 ]
