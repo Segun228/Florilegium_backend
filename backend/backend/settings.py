@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "api",
     "authentication",
+    "photos",
     'drf_spectacular',
     'drf_spectacular_sidecar',
     "rest_framework",
