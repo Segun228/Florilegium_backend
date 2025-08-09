@@ -2,10 +2,12 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import get_user_model
-
-User = get_user_model()
+from .models import User
+from .serializers import UserSerializer
 
 class TelegramAuthView(APIView):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
     def post(self, request):
         telegram_id = request.data.get("telegram_id")
         username = request.data.get("username")
