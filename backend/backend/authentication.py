@@ -9,7 +9,7 @@ class TelegramAuthentication(BaseAuthentication):
         if (telegram_header is None) or (not telegram_header):
             logging.error("Error finding auth headero")
             return None
-        prefix, telegram_id = telegram_header.split(" ")
+        prefix, telegram_id = telegram_header.split(" ", 1)
         if prefix.strip() != "Bot":
             logging.error("Error finding header prefix")
             return None

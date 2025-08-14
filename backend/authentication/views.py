@@ -50,4 +50,5 @@ class GetActiveUsers(ListAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.filter(is_alive = True)
     permission_classes = [IsAuthenticated]
+    
 
