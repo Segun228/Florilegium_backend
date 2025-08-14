@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.generics import (
     ListCreateAPIView, RetrieveUpdateDestroyAPIView
 )
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .models import Post, Category
 from .serializers import (

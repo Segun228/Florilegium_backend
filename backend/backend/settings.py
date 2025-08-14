@@ -71,13 +71,11 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        
-        'rest_framework.authentication.SessionAuthentication',
+        'backend.authentication.TelegramAuthentication',
     ],
     
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
     ],
 
     'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S',
